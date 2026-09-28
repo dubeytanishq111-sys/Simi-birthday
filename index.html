@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Simi ❤️</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  color:white;
+  min-height:100vh;
+  overflow-x:hidden;
+  background:
+    radial-gradient(circle at 20% 20%,#28365c 0,transparent 25%),
+    radial-gradient(circle at 80% 70%,#3b234d 0,transparent 28%),
+    #080b16;
+}
+
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background-image:
+    radial-gradient(white 1px,transparent 1px),
+    radial-gradient(white 1px,transparent 1px);
+  background-size:70px 70px,110px 110px;
+  background-position:10px 20px,50px 80px;
+  opacity:.45;
+  animation:stars 8s linear infinite;
+}
+
+@keyframes stars{
+  from{transform:translateY(0)}
+  to{transform:translateY(-70px)}
+}
+
+.page{
+  display:none;
+  min-height:100vh;
+  padding:35px 18px;
+  text-align:center;
+  position:relative;
+  z-index:2;
+  animation:fade .7s ease;
+}
+
+.page.active{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+@keyframes fade{
+  from{opacity:0;transform:translateY(15px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+h1{
+  font-size:clamp(38px,10vw,75px);
+  line-height:1.1;
+  text-shadow:0 0 20px #ff77bd;
+}
+
+h2{
+  font-size:clamp(27px,7vw,45px);
+  margin-bottom:20px;
+}
+
+p{
+  font-size:18px;
+  line-height:1.7;
+}
+
+.glow{
+  animation:glow 1.8s infinite alternate;
+}
+
+@keyframes glow{
+  from{text-shadow:0 0 8px #ff8bc8}
+  to{text-shadow:0 0 28px #ff4fa8,0 0 45px #9f7cff}
+}
+
+button{
+  border:0;
+  border-radius:30px;
+  padding:13px 25px;
+  margin:12px 5px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  background:linear-gradient(135deg,#ff5ca8,#8d6cff);
+  color:white;
+  box-shadow:0 0 18px #ff5ca866;
+}
+
+button:active{
+  transform:scale(.95);
+}
+
+.next{
+  margin-top:25px;
+}
+
+.date{
+  font-size:clamp(60px,18vw,120px);
+  font-weight:900;
+  animation:boomer 1.5s infinite alternate;
+}
+
+@keyframes boomer{
+  from{transform:scale(.85) rotate(-3deg);opacity:.65}
+  to{transform:scale(1.08) rotate(3deg);opacity:1}
+}
+
+.lock{
+  font-size:65px;
+  margin-bottom:15px;
+}
+
+input{
+  width:min(320px,90%);
+  padding:15px;
+  border-radius:25px;
+  border:1px solid #ffffff44;
+  background:#ffffff12;
+  color:white;
+  text-align:center;
+  outline:none;
+  font-size:17px;
+}
+
+input::placeholder{
+  color:#bbb;
+}
+
+.error{
+  color:#ff9dbf;
+  margin-top:8px;
+  min-height:25px;
+}
+
+.card{
+  width:min(720px,94%);
+  background:#ffffff0d;
+  border:1px solid #ffffff20;
+  border-radius:25px;
+  padding:25px;
+  box-shadow:0 0 35px #0008;
+  backdrop-filter:blur(8px);
+}
+
+.note{
+  text-align:left;
+  white-space:pre-line;
+  font-size:18px;
+}
+
+.special{
+  color:#ff9fd1;
+  font-weight:bold;
+  text-shadow:0 0 12px #ff5ca8;
+}
+
+.memory{
+  width:min(500px,95%);
+  margin:20px auto;
+  background:#ffffff10;
+  padding:15px;
+  border-radius:22px;
+  border:1px solid #ffffff22;
+}
+
+.memory img{
+  width:100%;
+  max-height:600px;
+  object-fit:contain;
+  border-radius:16px;
+  display:block;
+}
+
+.caption{
+  margin-top:15px;
+  font-size:16px;
+  line-height:1.7;
+  text-align:left;
+}
+
+.question{
+  width:min(600px,95%);
+  background:#ffffff0d;
+  border:1px solid #ffffff22;
+  padding:22px;
+  border-radius:22px;
+  margin:15px auto;
+}
+
+.question h3{
+  margin-bottom:15px;
+  line-height:1.5;
+}
+
+.option{
+  display:block;
+  width:100%;
+  margin:8px 0;
+  background:#ffffff12;
+  border:1px solid #ffffff22;
+  box-shadow:none;
+  text-align:left;
+}
+
+.option:hover{
+  background:#ffffff22;
+}
+
+.result{
+  min-height:50px;
+  margin-top:10px;
+  font-weight:bold;
+}
+
+.score{
+  position:sticky;
+  top:10px;
+  z-index:10;
+  background:#16182bcc;
+  padding:10px 22px;
+  border-radius:25px;
+  border:1px solid #ffffff22;
+  backdrop-filter:blur(8px);
+}
+
+.rhyme{
+  max-width:700px;
+  font-size:22px;
+  line-height:2;
+  margin:18px auto;
+}
+
+.balloon{
+  position:fixed;
+  bottom:-150px;
+  font-size:65px;
+  animation:float 7s linear infinite;
+  z-index:1;
+}
+
+.balloon:nth-child(1){left:10%;animation-delay:0s}
+.balloon:nth-child(2){left:30%;animation-delay:1s}
+.balloon:nth-child(3){left:50%;animation-delay:2s}
+.balloon:nth-child(4){left:70%;animation-delay:3s}
+.balloon:nth-child(5){left:88%;animation-delay:4s}
+
+@keyframes float{
+  0%{transform:translateY(0) rotate(-5deg)}
+  50%{transform:translateY(-55vh) rotate(7deg)}
+  100%{transform:translateY(-115vh) rotate(-5deg)}
+}
+
+.confetti{
+  position:fixed;
+  top:-20px;
+  font-size:25px;
+  animation:fall 4s linear infinite;
+  z-index:5;
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(110vh) rotate(360deg);
+  }
+}
+
+.footer{
+  margin-top:25px;
+  opacity:.85;
+  font-size:15px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<section class="page active" id="page1">
+  <div class="date">29<br>SEP</div>
+  <h2 class="glow">A little surprise is waiting... ✨</h2>
+  <p>For someone very special 💖</p>
+  <button class="next" onclick="showPage(2)">Continue →</button>
+</section>
+
+<!-- PAGE 2 -->
+<section class="page" id="page2">
+  <div class="lock">🔐</div>
+  <h2>Secret Word</h2>
+  <p>Enter the password to unlock your surprise 💖</p>
+  <br>
+  <input id="password" type="password" placeholder="Enter password">
+  <button onclick="unlock()">Unlock ❤️</button>
+  <div class="error" id="error"></div>
+</section>
+
+<!-- PAGE 3 -->
+<section class="page" id="page3">
+  <h1 class="glow">HAPPY BIRTHDAY</h1>
+  <h2 class="special">Meri Madam Jii ❤️</h2>
+  <p>🎂✨🎈💖🎈✨🎂</p>
+  <button class="next" onclick="showPage(4)">Open Your Surprise 💌</button>
+</section>
+
+<!-- PAGE 4 -->
+<section class="page" id="page4">
+  <div class="card">
+    <div class="note">
+<b>Happiest Birthday Meri Sundari!</b> 🎂❤️
+
+Mujhe nhi pata tha itti sundar aur chalak ladki
+merko mil jayegi.
+
+Aur ye copy kiya hu tumhara
+pata pr copy kiska kiya hu socho jra
+Simi ka? Simi Dubey ka? 😭😂
+
+To ye to OK hai na? 😅
+
+Aur aur tum meri fvrt ho
+meri Madam Ji ❤️
+
+Jada kuchh to bolunga
+Kyuki uh know everything.
+
+To chlo once again
+<b>Happy Birthday Simi ❤️🎂</b>
+
+                    Your obediently frnd
+                         Tanishq 😎
+    </div>
+  </div>
+
+  <button onclick="showPage(5)">Memories 📸</button>
+</section>
+
+<!-- PAGE 5 -->
+<section class="page" id="page5">
+  <h2 class="glow">Memories 📸❤️</h2>
+
+  <div class="memory">
+    <img src="Screenshot_20260927-093301_Gallery.jpg">
+    <div class="caption">
+      Ahhhhh!!! Ye masumiyat ye jhuki huyi plke hayee ye pehla aur sbse
+      thos vjh hai darling ki mai tumse hug krna chahta pehli brr yhi
+      photo dekh ke merko lga bhyi sach me glacier pighal hi jata 😅
+    </div>
+  </div>
+
+  <div class="memory">
+    <img src="Screenshot_20260928-101011_Gallery.jpg">
+    <div class="caption">
+      Ye tumhara photo tumne instant me dala tha iske liye to swimsuit
+      pehn ke ready ho gya tha ki ab swim krunga madam ji ke aankho pr
+      door ho na 😑
+    </div>
+  </div>
+
+  <div class="memory">
+    <img src="Screenshot_20260928-100809_Gallery.jpg">
+    <div class="caption">
+      Ye is din merko sbse jada khushi huyi thi sun rheee jbhi tumne bola
+      wahhh wahhh krte reh gya
+    </div>
+  </div>
+
+  <button onclick="showPage(6)">Chalo Sawal-Jawab ho jaye 😏</button>
+</section>
+
+<!-- PAGE 6 -->
+<section class="page" id="page6">
+  <div class="score">
+    Score: <span id="score">0</span> / 20
+  </div>
+
+  <h2 class="glow">Chalo kuchh Sawal-Jawab ho jaye 😭😂</h2>
+  <p>Copy kiya hai to puri tarah se kr hi lu 😎</p>
+
+  <!-- Q1 -->
+  <div class="question">
+    <h3>1. Tanishq ko Simi ki sabse achhi kya lagti hai?</h3>
+    <button class="option" onclick="answer(1,'A')">A) Simi ki aankhein 👀</button>
+    <button class="option" onclick="answer(1,'B')">B) Simi ki smile 😊</button>
+    <button class="option" onclick="answer(1,'C')">C) Simi ki cute baatein 🥹</button>
+    <button class="option" onclick="answer(1,'D')">D) Everything 💖</button>
+    <div class="result" id="r1"></div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="question">
+    <h3>2. Simi ko dekhte hi Tanishq ka sabse pehla reaction kya hota hai?</h3>
+    <button class="option" onclick="answer(2,'A')">A) “Accha…” 😐</button>
+    <button class="option" onclick="answer(2,'B')">B) “Wahhh!” 😭</button>
+    <button class="option" onclick="answer(2,'C')">C) “Haye!” 😭❤️</button>
+    <button class="option" onclick="answer(2,'D')">D) Teeno ek saath 😂</button>
+    <div class="result" id="r2"></div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="question">
+    <h3>3. Tanishq Simi ko hug kyun karna chahta hai?</h3>
+    <button class="option" onclick="answer(3,'A')">A) Simi ki cute smile ke liye 😊</button>
+    <button class="option" onclick="answer(3,'B')">B) Into your arms ❤️</button>
+    <button class="option" onclick="answer(3,'C')">C) Uske saath time spend karne ke liye 🥹</button>
+    <button class="option" onclick="answer(3,'D')">D) Kyuki romantic hai 😏</button>
+    <div class="result" id="r3"></div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="question">
+    <h3>4. Simi itni sundar kyu hai bhaiiiii? 😭❤️</h3>
+    <button class="option" onclick="answer(4,'A')">A) Kyuki roj nahati hai, tu nahi nahata na 😭😂</button>
+    <button class="option" onclick="answer(4,'B')">B) Bachpan se hai 😌</button>
+    <button class="option" onclick="answer(4,'C')">C) Devi hai to lgegi hi ✨</button>
+    <button class="option" onclick="answer(4,'D')">D) Bhagwan ne time leke bnaya hai ❤️</button>
+    <div class="result" id="r4"></div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="question">
+    <h3>5. 9 mahine ki online friendship ke baad Simi ko Tanishq se sabse bada risk kya hai? 😭</h3>
+    <button class="option" onclick="answer(5,'A')">A) Tanishq ki bakbak sunni padegi 😂</button>
+    <button class="option" onclick="answer(5,'B')">B) Random messages kabhi bhi aa sakte hain 📱</button>
+    <button class="option" onclick="answer(5,'C')">C) “Ek baat bolu?” ke baad 20 minute ki kahani 😭</button>
+    <button class="option" onclick="answer(5,'D')">D) Ab aadat si ho gayi hai bhai, chhutegi nahi 😎❤️</button>
+    <div class="result" id="r5"></div>
+  </div>
+
+  <button onclick="finishQuiz()">Final Score 🎁</button>
+</section>
+
+<!-- PAGE 7 -->
+<section class="page" id="page7">
+  <h2 class="glow">Your Final Score 💖</h2>
+  <div class="card">
+    <h1 id="finalScore">0/20</h1>
+    <p id="reward"></p>
+  </div>
+  <button onclick="showPage(8)">Aage Chalo →</button>
+</section>
+
+<!-- PAGE 8 -->
+<section class="page" id="page8">
+  <h2 class="glow">Birthday Rhymes 😂❤️</h2>
+
+  <div class="rhyme">
+    Dark movie me hero ne mara Adam ka,<br>
+    Happy vala birthday hai aaj meri madam ka 🎂❤️
+  </div>
+
+  <div class="rhyme">
+    Bachhe khate rehte hai chori se chini,<br>
+    Yha to sbse pyari lg rhi meri Simi ❤️
+  </div>
+
+  <div class="rhyme">
+    Aajkl bekar ho gya hai jio ka net<br>
+    Genz kr nhi paa rhe ldki set<br>
+    Meri darling can I hold uhr hand 😉❤️
+  </div>
+
+  <div class="card">
+    <p>
+      Phir ye meri Simi, agar kuchh galti huyi ho to sorry hn ❤️<br><br>
+      Bholenath tumko aage bdhaye sapna pura kre tumhara 🙏❤️<br><br>
+      Pr pehle vo ghr lene vala tbhi to mai aa paunga tumhare idhr 😅<br>
+      bartan bhi mjvaogi bolo 😭😂
+    </p>
+  </div>
+
+  <div class="card" style="margin-top:20px">
+    <p>
+      Chlo again happy birthday 🎂❤️<br>
+      enjoy uhr day<br>
+      dher Sara pyara tumhare liye<br>
+      tumhare dost Tanishq ki trf se 😎❤️
+    </p>
+  </div>
+
+  <button onclick="showPage(9)">Final Surprise 🎈</button>
+</section>
+
+<!-- PAGE 9 -->
+<section class="page" id="page9">
+  <div class="balloon">🎈</div>
+  <div class="balloon">🎈</div>
+  <div class="balloon">🎈</div>
+  <div class="balloon">🎈</div>
+  <div class="balloon">🎈</div>
+
+  <h1 class="glow">🎂 HAPPY BIRTHDAY 🎂</h1>
+  <h1 class="special">SIMI ❤️</h1>
+
+  <p style="font-size:30px;margin-top:20px">
+    🎈✨🎉💖🎉✨🎈
+  </p>
+
+  <p style="margin-top:25px">
+    Stay happy, keep smiling<br>
+    and enjoy your special day! ❤️
+  </p>
+
+  <p class="footer">Made with ❤️ by Tanishq 😎</p>
+</section>
+
+<script>
+let score=0;
+let answered=[false,false,false,false,false];
+
+const correct={
+  1:"D",
+  2:"D",
+  3:"B",
+  4:"D",
+  5:"D"
+};
+
+function showPage(n){
+  document.querySelectorAll(".page").forEach(p=>{
+    p.classList.remove("active");
+  });
+
+  document.getElementById("page"+n).classList.add("active");
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+}
+
+function unlock(){
+  const pass=document.getElementById("password").value
+    .trim()
+    .toLowerCase();
+
+  if(pass==="simi"){
+    document.getElementById("error").innerText="";
+    showPage(3);
+  }else{
+    document.getElementById("error").innerText=
+      "Wrong password 😭 Try again!";
+  }
+}
+
+function answer(q,choice){
+
+  if(answered[q-1]) return;
+
+  answered[q-1]=true;
+
+  const result=document.getElementById("r"+q);
+
+  if(choice===correct[q]){
+    score+=4;
+    document.getElementById("score").innerText=score;
+
+    if(q===1){
+      result.innerText="Meri favourite ho, itta toh pta hi rhega 😅❤️";
+    }
+
+    if(q===2){
+      result.innerText="Meri Madam hai hi itti sundar 😭❤️";
+    }
+
+    if(q===3){
+      result.innerText="Wahhh kya bttt hai darling 😭❤️";
+    }
+
+    if(q===4){
+      result.innerText=
+        "Dekhaaa, ye hui na baat! Meri Madam ko banane mein Bhagwan ne bhi extra time liya hai 😭❤️";
+    }
+
+    if(q===5){
+      result.innerText=
+        "Haan basss, ab fas gayi ho Madam Ji 😭😂❤️";
+    }
+
+  }else{
+    result.innerText=
+      q===3
+      ? "Koi na, thoda tough tha phir sukoon milega isse 😭"
+      : "Chchch... ye ummid na thi Madam Ji 😭😂";
+  }
+}
+
+function finishQuiz(){
+
+  document.getElementById("finalScore").innerText=
+    score+"/20";
+
+  let reward="";
+
+  if(score<=4){
+    reward="Madam ji, lagta hai aaj dimaag chhutti pe tha 😂";
+  }
+  else if(score<=8){
+    reward="Koi na madam ji, thoda aur practice karni padegi 😭😂";
+  }
+  else if(score<=12){
+    reward="Accha ji… itna toh mujhe bhi expect nahi tha 😭❤️";
+  }
+  else if(score<=16){
+    reward="Wahhh Madam Ji, ab lag raha hai meri favourite ho! ❤️";
+  }
+  else{
+    reward="OHHH MADAM JIII! Full marks 😭❤️ Tum toh mujhe mujhse bhi zyada jaanti ho!";
+  }
+
+  if(score===20){
+    reward+="<br><br>Meri favourite ho, ye toh pehle se pata tha… par aaj officially prove bhi kar diya! 😭❤️";
+  }
+
+  document.getElementById("reward").innerHTML=reward;
+
+  showPage(7);
+}
+
+function createConfetti(){
+  for(let i=0;i<25;i++){
+    const c=document.createElement("div");
+    c.className="confetti";
+    c.innerText=["🎉","✨","💖","🎈","⭐"][Math.floor(Math.random()*5)];
+    c.style.left=Math.random()*100+"vw";
+    c.style.animationDelay=(Math.random()*4)+"s";
+    document.body.appendChild(c);
+  }
+}
+
+createConfetti();
+</script>
+
+</body>
+  </html>
